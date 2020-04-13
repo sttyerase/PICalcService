@@ -16,7 +16,7 @@ public class PICalcApplication {
 
 	@GetMapping("/calculate")
 	public String home() {
-	    System.out.format("%s", "Calculating: ");
+	    System.out.format("Calculating: months %d , principal $%,3.2f, interestRate  %3.2f%% \n", months, principal, interestRate);
 		return new Calculation().getCalculation(months, principal, interestRate);
 	} // HOME()
 
