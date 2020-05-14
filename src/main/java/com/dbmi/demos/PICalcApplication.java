@@ -12,12 +12,12 @@ import com.dbmi.money.Calculation;
 @SpringBootApplication
 @RestController
 public class PICalcApplication {
-    private int months          = 48;
-    private double principal    = 25000.00;
-    private double interestRate = 3.85;
 
 	@GetMapping("/reference")
-	public String home() {
+	public String reference() {  // REFERENCE METHOD FOR TESTING CONNECTIVITY
+		int months          = 48;
+		double principal    = 25000.00;
+		double interestRate = 3.85;
 	    System.out.format("Calculating: months %d , principal $%,3.2f, interestRate  %3.2f%% \n", months, principal, interestRate);
 		return new Calculation().getCalculation(months, principal, interestRate);
 	} // HOME()
