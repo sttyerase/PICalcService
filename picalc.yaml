@@ -18,7 +18,7 @@ spec:
         app: picalc
     spec:
       containers:
-      - image: quay.io/sttyerase/picalc:0.1
+      - image: quay.io/sttyerase/picalc:latest
         name: picalc
         resources: {}
 status: {}
