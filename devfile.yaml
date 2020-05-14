@@ -36,13 +36,13 @@ components:
 commands:
   - name: maven build
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/picalc'
+      - workdir: '${CHE_PROJECTS_ROOT}/PICalcService'
         type: exec
         command: mvn clean install
         component: tools
   - name: run webapp
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/picalc'
+      - workdir: '${CHE_PROJECTS_ROOT}/PICalcService'
         type: exec
         command: >
           java -jar -Xdebug
