@@ -1,6 +1,6 @@
 package com.dbmi.money;
 
-public class Calculation {
+public class CalculationService {
     private PICalcJson myCalc   = new PICalcJson();
 
     public String getCalculation(int months, double principal, double interestRate) {
@@ -8,7 +8,7 @@ public class Calculation {
     } // GETCALCULATION()
 
     public static void main(String[] args) {
-        System.out.format("%s", new Calculation().getCalculation(48, 25000.00,  3.85));
+        System.out.format("%s", new CalculationService().getCalculation(48, 25000.00,  3.85));
     } // MAIN(STRING[])
 
 } // CLASS
