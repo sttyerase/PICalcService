@@ -1,43 +1,21 @@
-apiVersion: apps/v1
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: picalc-deployment
   labels:
     app: picalc
-  name: picalc
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: picalc
-  strategy: {}
+  replicas: 2 # tells deployment to run 2 pods matching the template
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: picalc
     spec:
       containers:
-      - image: quay.io/sttyerase/picalc:latest
-        name: picalc
-        resources: {}
-status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  creationTimestamp: null
-  labels:
-    app: picalc
-  name: picalc
-spec:
-  ports:
-  - name: 8080-8080
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-  selector:
-    app: picalc
-  type: ClusterIP
-status:
-  loadBalancer: {}
+        - name: picalc
+          image: docker.io/dbmidocker/picalc:latest
+          ports:
+            - containerPort: 8181
