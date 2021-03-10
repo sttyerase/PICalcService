@@ -28,7 +28,7 @@ public class PICalcApplication {
     public String calculate(@PathVariable("months") Integer months,@PathVariable("principal") Double principal, @PathVariable("interestrate") Double interestRate) {
 	    System.out.format("Calculating: months %d , principal $%,3.2f, interestRate  %3.2f%% \n", months, principal, interestRate);
 		HttpHeaders myHeaders = new HttpHeaders();
-		myHeaders.add("Content-Type","application/json");
+		myHeaders.add("content-type","application/json");
 		return new CalculationService().getCalculation(months, principal, interestRate);
     } // GETCROPSBYID(LONG)
 
