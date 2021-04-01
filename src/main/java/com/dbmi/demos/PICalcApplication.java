@@ -18,7 +18,7 @@ public class PICalcApplication {
     public ResponseEntity<String> home(){
         String homePage = "<html><body><p>Welcome to the Principal and Interest calculation page.</p></body></html>";
 		HttpHeaders myHeaders = new HttpHeaders();
-		myHeaders.set("Content-Type","application/json");
+		myHeaders.set("Content-Type","text/html");
 		return ResponseEntity.ok()
 				.headers(myHeaders)
 				.body(homePage);
