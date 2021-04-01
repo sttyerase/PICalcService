@@ -14,7 +14,17 @@ import com.dbmi.money.CalculationService;
 @RestController
 public class PICalcApplication {
 
-	@GetMapping("/reference")
+    @GetMapping("/")
+    public ResponseEntity<String> home(){
+        String homePage = "<html><body><p>Welcome to the Principal and Interest calculation page.</p></body></html>";
+		HttpHeaders myHeaders = new HttpHeaders();
+		myHeaders.set("Content-Type","application/json");
+		return ResponseEntity.ok()
+				.headers(myHeaders)
+				.body(homePage);
+    } // HOME()
+
+    @GetMapping("/reference")
 	public ResponseEntity<String> reference() {  // REFERENCE METHOD FOR TESTING CONNECTIVITY
 		int months          = 48;
 		double principal    = 25000.00;
@@ -25,7 +35,7 @@ public class PICalcApplication {
 		return ResponseEntity.ok()
 				.headers(myHeaders)
 				.body(new CalculationService().getCalculation(months, principal, interestRate));
-	} // HOME()
+	} // REFERENCE()
 
     @GetMapping("/calculate/{months}/{principal}/{interestrate}")
     public ResponseEntity<String> calculate(@PathVariable("months") Integer months,@PathVariable("principal") Double principal, @PathVariable("interestrate") Double interestRate) {
@@ -36,7 +46,7 @@ public class PICalcApplication {
 		return ResponseEntity.ok()
 				.headers(myHeaders)
 				.body(new CalculationService().getCalculation(months, principal, interestRate));
-    } // GETCROPSBYID(LONG)
+    } // CALCULATE(INTEGER,DOUBLE,DOUBLE)
 
 	public static void main(String[] args) {
 		SpringApplication.run(PICalcApplication.class, args);
