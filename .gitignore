@@ -5,3 +5,6 @@
 mvnw
 mvnw.cmd
 *.iml
+.classpath
+.project
+org.eclipse*
