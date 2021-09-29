@@ -13,8 +13,10 @@ public class PICalcJson {
       Double [][] paydet;
       double payment = 0;
       double intrate = (irate * 0.01)/12;
+      // CALCULATE THE AMOUNT OF THE MONTHLY PAYMENT AND DETAILS
       payment = (intrate * princp)/(1-(java.lang.Math.pow((1+intrate),-mon)));
       paydet = calculatePaymentDetails(princp,intrate,mon,payment);
+      // FORMAT THE DETAILED RESULTS FOR OUTPUT IN JSON
       fmt.format("{\"LOAN\" : { \"terms\" : { \"principal\" :  %04.2f , \"annual interest rate \" : %04.2f , \"months\" : %d }}, \n",princp,irate,mon);
       fmt.format("        \"monthly payment\" : %04.2f , \n",payment);
       fmt.format("       \"details\" : [ \n");
@@ -29,8 +31,16 @@ public class PICalcJson {
       fmt.format("}");
       calculation = calculation.concat(sb.substring(0));
       return calculation;
-   } // CALCULATE(DOUBLE,DOUBLE,INT)
+   } // CALCULATEPAYMENT(DOUBLE,DOUBLE,INT)
 
+   /**
+    * calculate and return the monthly payment details.
+    * @param princp  principal - amount to be borrowed.
+    * @param irate   interest rate % in annual terms.
+    * @param mon     term in months over which payments occur.
+    * @param pymt    the calculated monthly payment amount.
+    * @return        an mon x 3 array of Double with the detailed calculations.
+    */
    public Double[][] calculatePaymentDetails(double princp, double irate, int mon, double pymt){
       Double[][] detail = new Double[mon][3];
       double intpaid = 0;
