@@ -13,11 +13,11 @@ public class PICalcJson {
       Double [][] paydet;
       double payment = 0;
       double intrate = (irate * 0.01)/12;
-      fmt.format("{\"LOAN\" : { \"terms\" : { \"principal\" :  %04.2f , \"annual interest rate \" : %04.2f , \"months\" : %d }}, \n",princp,irate,mon);
       payment = (intrate * princp)/(1-(java.lang.Math.pow((1+intrate),-mon)));
+      paydet = calculatePaymentDetails(princp,intrate,mon,payment);
+      fmt.format("{\"LOAN\" : { \"terms\" : { \"principal\" :  %04.2f , \"annual interest rate \" : %04.2f , \"months\" : %d }}, \n",princp,irate,mon);
       fmt.format("        \"monthly payment\" : %04.2f , \n",payment);
       fmt.format("       \"details\" : [ \n");
-      paydet = calculatePaymentDetails(princp,intrate,mon,payment);
       for(int indx = 0 ; indx < mon ; indx++){
          fmt.format(" {\"month\" : %d , \"interest payment\" : %04.2f , \"principal paid\" : %04.2f , \"principal balance\" : %04.2f }",
                  indx + 1, paydet[indx][0],paydet[indx][1],paydet[indx][2]);
