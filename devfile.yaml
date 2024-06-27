@@ -1,0 +1,15 @@
+schemaVersion: 2.2.2
+metadata:
+  name: picalcservice-walh
+  namespace: dbmidan-dev
+projects:
+  - attributes: {}
+    name: picalcservice
+    git:
+      remotes:
+        origin: https://github.com/sttyerase/PICalcService.git
+components:
+  - container:
+      image: quay.io/devfile/universal-developer-image:ubi8-d071837
+      sourceMapping: /projects
+    name: universal-developer-image
